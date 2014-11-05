@@ -1,13 +1,23 @@
 'use strict';
-
-var sqlite3 = require('sqlite3')
+var path    = require('path')
   , caminte = require('caminte')
-  , Schema = caminte.Schema
-  , db = {
-         driver     : "sqlite",
-         database   : "/db/sqlite.db"
-    }
-  , schema = new Schema(db.driver, db)
+  , Schema  = caminte.schema
+  , schema  = false
+  , log     = require('magic-log')
 ;
 
-module.exports = schema;
+exports.init = function init (settings) {
+  if ( schema ) { return schema; }
+
+  if ( ! settings || typeof settings !== 'object' ) {
+    settings = {
+      driver: 'sqlite3'
+    , database: path.join(process.cwd(), 'gs.db')
+    };
+    log('magic-db init called without a valid settings object. defaults:');
+    log(settings);
+  }
+
+  schema = new Schema(settings);
+  return schema;
+}
