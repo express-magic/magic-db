@@ -1,7 +1,7 @@
 'use strict';
 var path    = require('path')
   , caminte = require('caminte')
-  , Schema  = caminte.schema
+  , Schema  = caminte.Schema
   , schema  = false
   , log     = require('magic-log')
 ;
@@ -9,15 +9,14 @@ var path    = require('path')
 exports.init = function init (settings) {
   if ( schema ) { return schema; }
 
-  if ( ! settings || typeof settings !== 'object' ) {
+  if ( ! settings || typeof settings !== 'object' || ! settings.driver) {
     settings = {
-      driver: 'sqlite3'
+      driver: 'tingodb'
     , database: path.join(process.cwd(), 'gs.db')
     };
-    log('magic-db init called without a valid settings object. defaults:');
-    log(settings);
+    log('magic-db init called without a valid settings object. defaults used.');
   }
 
-  schema = new Schema(settings);
+  schema = new Schema(settings.driver, settings);
   return schema;
 }

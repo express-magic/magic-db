@@ -6,7 +6,7 @@
   "dependencies": {
     "caminte": "0.0.22",
     "magic-log": "git://github.com/express-magic/magic-log",
-    "sqlite3": "^3.0.2"
+    "tingodb": "^0.3.0"
   },
   "repository": {
     "type": "git",
