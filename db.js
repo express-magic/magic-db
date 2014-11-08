@@ -15,6 +15,7 @@ exports.init = function init (settings) {
     , database: path.join(process.cwd(), 'gs.db')
     };
     log('magic-db init called without a valid settings object. defaults used.');
+    log(settings);
   }
 
   schema = new Schema(settings.driver, settings);
