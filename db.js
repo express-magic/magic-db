@@ -12,7 +12,7 @@ exports.init = function init (settings) {
   if ( ! settings || typeof settings !== 'object' || ! settings.driver) {
     settings = {
       driver: 'tingodb'
-    , database: path.join(process.cwd(), 'gs.db')
+    , database: path.join(process.cwd(), 'db')
     };
     log('magic-db init called without a valid settings object. defaults used.');
     log(settings);
