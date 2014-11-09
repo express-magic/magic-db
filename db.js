@@ -21,3 +21,10 @@ exports.init = function init (settings) {
   schema = new Schema(settings.driver, settings);
   return schema;
 }
+
+
+exports.get = function get() {
+  if ( schema ) { return schema; }
+
+  return new Error('Database init has not been called');
+}
