@@ -2,29 +2,14 @@
 var path    = require('path')
   , caminte = require('caminte')
   , Schema  = caminte.Schema
-  , schema  = false
   , log     = require('magic-log')
 ;
 
-exports.init = function init (settings) {
-  if ( schema ) { return schema; }
-
-  if ( ! settings || typeof settings !== 'object' || ! settings.driver) {
-    settings = {
-      driver: 'tingodb'
-    , database: path.join(process.cwd(), 'db')
-    };
-    log('magic-db init called without a valid settings object. defaults used.');
-    log(settings);
+module.exports = function init (settings) {
+  if ( ! settings || ! settings.driver) {
+    log('magic-db called without a valid settings object.', 'error');
+    return;
   }
-
-  schema = new Schema(settings.driver, settings);
-  return schema;
+  return new Schema(settings.driver, settings);
 }
 
-
-exports.get = function get() {
-  if ( schema ) { return schema; }
-
-  return new Error('Database init has not been called');
-}
