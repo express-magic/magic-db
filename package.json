@@ -4,9 +4,10 @@
   "private": true,
   "main": "db.js",
   "dependencies": {
-    "caminte": "0.0.22",
     "magic-log": "git://github.com/express-magic/magic-log",
-    "tingodb": "^0.3.0"
+    "mongoose": "^3.8.19",
+    "tingodb": "^0.3.0",
+    "tungus": "0.0.4"
   },
   "repository": {
     "type": "git",

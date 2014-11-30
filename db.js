@@ -1,15 +1,24 @@
 'use strict';
-var path    = require('path')
-  , caminte = require('caminte')
-  , Schema  = caminte.Schema
-  , log     = require('magic-log')
+var path     = require('path')
+  , tungus   = require('tungus')
+  , mongoose = require('mongoose')
+  , log      = require('magic-log')
+  , Schema   = mongoose.Schema
 ;
 
-module.exports = function init (settings) {
-  if ( ! settings || ! settings.driver) {
-    log('magic-db called without a valid settings object.', 'error');
-    return;
+module.exports = function init (settings, next) {
+  if ( ! next ) {
+    return log.error('magic-db', 'called without next callback, this breaks the middleware flow.');
   }
-  return new Schema(settings.driver, settings);
+
+  if ( ! settings.database) {
+    log.error('magic-db', 'called without a valid settings object.', settings);
+    return next('magic-db init called without a valid settings object');
+  }
+
+  mongoose.connect(settings.database, function (err) {
+    //log('mongoose connected');
+    next(err, mongoose);
+  });
 }
 
