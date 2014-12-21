@@ -5,9 +5,6 @@
   "main": "db.js",
   "dependencies": {
     "magic-log": "git://github.com/express-magic/magic-log",
-    "mongoose": "^3.8.19",
-    "tingodb": "^0.3.0",
-    "tungus": "0.0.4"
   },
   "repository": {
     "type": "git",
