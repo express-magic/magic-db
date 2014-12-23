@@ -4,7 +4,7 @@
   "private": true,
   "main": "db.js",
   "dependencies": {
-    "magic-log": "git://github.com/express-magic/magic-log",
+    "magic-log": "git://github.com/express-magic/magic-log"
   },
   "repository": {
     "type": "git",
