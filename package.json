@@ -4,6 +4,7 @@
   "private": true,
   "main": "db.js",
   "dependencies": {
+    "express": "^4.10.7",
     "magic-log": "git://github.com/express-magic/magic-log"
   },
   "repository": {
