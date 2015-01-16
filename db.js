@@ -5,6 +5,6 @@ var path     = require('path')
 ;
 
 module.exports = function init (settings, next) {
-  log('magic-db', 'connecting to db');
+  log('magic-db', 'connecting to db', settings.name);
   mongoose.connect('mongodb://localhost/' + settings.name, next);
 }
