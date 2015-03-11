@@ -2,11 +2,16 @@
   "name": "magic-db",
   "version": "0.0.1",
   "private": true,
-  "main": "db.js",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "babel src/ --out-file index.js --source-maps"
+  },
   "dependencies": {
-    "express": "^4.10.7",
-    "magic-log": "git://github.com/express-magic/magic-log",
-    "mongoose": "^3.8.21"
+    "async": "file:../../node_modules/async",
+    "leveldown-hyper-prebuilt": "../../node_modules/leveldown-hyper-prebuilt",
+    "levelup": "file:../../node_modules/levelup",
+    "magic-log": "file:../magic-log",
+    "magic-utils": "file:../magic-utils"
   },
   "repository": {
     "type": "git",
